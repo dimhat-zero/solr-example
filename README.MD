@@ -1,11 +1,12 @@
 #solr-example
 使用spring-data-solr操作solr的项目。
 
->
-spring-data-solr官网
-@see https://github.com/spring-projects/spring-data-solr
-spring-data-solr官方示例
-@see https://github.com/spring-projects/spring-data-solr-examples
+> spring-data-solr官网
+> @see https://github.com/spring-projects/spring-data-solr
+> spring-data-solr官方示例
+> @see https://github.com/spring-projects/spring-data-solr-examples
+
+***
 
 ##配置多core
 配置多个SolrTemplate的bean，构造注入不同的core名称，最后注入自定义的repo
@@ -26,6 +27,8 @@ spring-data-solr官方示例
 	<property name="solrOperations" ref="solrProductTemplate" />
 </bean>
 ```
+
+***
 
 ##使用方法说明
 1. 使用searchRepository
