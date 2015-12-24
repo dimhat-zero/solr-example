@@ -1,6 +1,7 @@
 #solr-example
 使用spring-data-solr操作solr的项目。
 
+>
 spring-data-solr官网
 @see https://github.com/spring-projects/spring-data-solr
 spring-data-solr官方示例
@@ -59,6 +60,8 @@ spring-data的映射（直接在接口中定义查询方法，如果是符合规
  */
 Page<Product> findByAvailableTrue(Pageable page);
 ```
+
+***
 
 ##环境依赖
 * maven
