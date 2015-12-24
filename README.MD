@@ -61,5 +61,5 @@ Page<Product> findByAvailableTrue(Pageable page);
 ```
 
 ##环境依赖
-maven
-solr 在solr根目录/example下运行jar -jar start.jar启动solr
+* maven
+* solr 在solr根目录/example下运行jar -jar start.jar启动solr(http://localhost:8983/solr/)
