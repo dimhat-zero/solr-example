@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:solr="http://www.springframework.org/schema/data/solr"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/data/solr http://www.springframework.org/schema/data/solr/spring-solr-1.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<context:property-placeholder
+		location="classpath:org/dimhat/solr/example/config.properties"
+		ignore-resource-not-found="true" />
+
+	<!-- solr服务器地址 -->
+	<solr:solr-server id="solrServer" url="${solr.host}" />
+
+	<!-- 多个core设置不同的solrTemplate -->
+	<bean id="solrProductTemplate" class="org.springframework.data.solr.core.SolrTemplate"
+		scope="singleton">
+		<constructor-arg ref="solrServer" />
+		<constructor-arg value="${solr.product.core.name}" />
+	</bean>
+
+	<!-- 自定义的repo，引用设置了core的template，不指定默认collection1 -->
+	<bean id="searchRepository"
+		class="org.dimhat.solr.example.repository.support.SolrProductRepository">
+		<property name="solrOperations" ref="solrProductTemplate" />
+	</bean>
+
+</beans>
